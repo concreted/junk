@@ -1,4 +1,4 @@
-var makeStopwatch = function() {
+exports.makeStopwatch = function() {
     var elapsed = 0;
     var stopwatch = function() {
 	console.log(elapsed);
