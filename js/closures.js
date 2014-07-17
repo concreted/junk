@@ -1,7 +1,6 @@
 var makeStopwatch = function() {
     var elapsed = 0;
     var stopwatch = function() {
-	console.log(elapsed);
 	return elapsed;
     };
     var increase = function() {elapsed++;};
@@ -12,12 +11,23 @@ var makeStopwatch = function() {
 var testStopwatch = function() {
     var stopwatch1 = makeStopwatch();
     var stopwatch2 = null;
+
+    console.log("Stopwatch1: " + stopwatch1());
+    console.log("Creating Stopwatch2 in 2 seconds...");
+
     setTimeout(function() {
 	stopwatch2 = makeStopwatch();
-    }, 3000);
-    setTimeout(function() {stopwatch1()}, 4000);
-    setTimeout(function() {stopwatch2()}, 5000);
+	console.log("Stopwatch1: " + stopwatch1());
+	console.log("Stopwatch2: " + stopwatch2());
+	
+	setInterval(function() {
+	    console.log("Stopwatch1: " + stopwatch1())
+	    console.log("Stopwatch2: " + stopwatch2());
+	}, 1000);
+    
+    }, 2000);
+    
+    return;
 }
 
-exports.makeStopwatch = makeStopwatch;
-exports.testStopwatch = testStopwatch;
+testStopwatch();
